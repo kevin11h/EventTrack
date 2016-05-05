@@ -1,4 +1,15 @@
 <h1> Welcome </h1>
 <% if !current_user.nil? %>
-  <%= current_user.username %>
+  <h3><%= current_user.username %></h3>
+  <p>Your events are </p>
+  <ul>
+    <% if @events.any? %>
+      <% @events.each do |e| %>
+        <%= link_to  "#{e.name} - #{e.date}", edit_event_path(e) %>
+      <% end %>
+    <% else %>
+      <li> There are no events </li>
+    <% end %>
+  </ul>
+  <p> <%= link_to "Events", events_path  %>
 <% end %>
