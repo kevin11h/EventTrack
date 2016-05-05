@@ -1,1 +1,4 @@
 <h1> Welcome </h1>
+<% if !current_user.nil? %>
+  <%= current_user.username %>
+<% end %>
