@@ -1,1 +1,7 @@
 <%= @user.id %> - <%= @user.username %>
+<br/>
+<% @user.attended_events.each do |a| %>
+<ul>
+  <li><%= a.name %></li>
+</ul>
+<% end %>
