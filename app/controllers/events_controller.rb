@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :logged_in?
+  before_action :user_logged, except: :index
   before_action :correct_user, only: [:edit,:update]
 
   def new
@@ -18,7 +18,8 @@ class EventsController < ApplicationController
   end
 
   def index
-    @events = current_user.events unless current_user.nil?
+    @events = []
+    @events = current_user.events unless current_user.nil?          
   end
 
   def show
@@ -54,6 +55,10 @@ class EventsController < ApplicationController
     def correct_user
       @event = current_user.events.find_by(id: params[:id])
       redirect_to root_url if @event.nil?
+    end
+
+    def user_logged
+      redirect_to root_url unless logged_in?
     end
 
 end
