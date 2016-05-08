@@ -1,7 +1,15 @@
-<h3> <%= @event.name %> </h3>
-<h4> <%= @event.date %> </h4>
-<p> <%= @event.description %> </p>
+<div class="page-header">
+  <h3> <%= @event.name %> </h3>
+</div>
+<div>
+  <p>Created by: <%= @event.creator.username %></p>
+  <p>When: <%= event_date @event.date %></p>
+</div>
+<div>
+  Event details:
+  <p> <%= @event.description %> </p>
+</div>
 <br/>
-<ul><% @event.attendees.each do |a| %><li><%= a.username %></li><% end %><ul>
+Who is going?
+<ul><% @event.attendees.each do |a| %><li><%= link_to a.username, a %></li><% end %><ul>
 <br/>
-<%= link_to "Events", events_path %>

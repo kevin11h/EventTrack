@@ -1,7 +1,10 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @events = current_user.events unless current_user.nil?
+    if logged_in?
+      @events = current_user.events
+      @invites = current_user.attended_events
+    end
   end
 
 end

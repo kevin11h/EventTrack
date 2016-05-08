@@ -1,21 +1,7 @@
 <% if @events.any? %>
-    <table>
-      <tr>
-        <th>Event</th>
-        <th>Date</th>
-        <th>Description</th>
-      </tr>
-      <% @events.each do |e| %>
-        <tr>
-          <td><%= link_to e.name, event_path(e) %></td>
-          <td><%= e.date %></td>
-          <td><%= e.description[0,20] %></td>
-          <td><%= link_to "Edit", edit_event_path(e) %>
-        </tr>
-      <% end %>
-    </table>
+  <%= render 'shared/events', object: @events %>
 <% else %>
   <h3> There are no events </h3>
 <% end %>
-<br/>
-<%= link_to "New Event", new_event_path %>
+
+<%= link_to "New Event", new_event_path, class: "btn btn-primary" %>

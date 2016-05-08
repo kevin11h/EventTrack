@@ -1,7 +1,16 @@
-<%= @user.id %> - <%= @user.username %>
-<br/>
-<% @user.attended_events.each do |a| %>
-<ul>
-  <li><%= a.name %></li>
-</ul>
+<div class="page-header">
+  <h3><%= @user.id %> - <%= @user.username %></h3>
+</div>
+Events I've created:
+<% if @user.events %>
+<%= render 'shared/events', object: @user.events %>
+<% else %>
+  <h4 class="text-center text-muted">This user doesn't have any event</h4>
+<% end %>
+
+Events I'm going:
+<% if @user.attended_events.any? %>
+  <%= render 'shared/events', object: @user.attended_events %>
+<% else %>
+  <h4 class="text-center text-muted">This user isn't going anywhere</h4>
 <% end %>

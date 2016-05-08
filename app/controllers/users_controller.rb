@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :logged_in?, only: :profile
 
   def new
     @user = User.new
@@ -15,7 +16,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    redirect_to root_path if @user.nil?
+
   end
+
+  def profile
+    @user = User.find_by(id: current_user.id)
+  end
+
 
   private
     def user_params
