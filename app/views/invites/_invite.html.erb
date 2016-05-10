@@ -1,0 +1,10 @@
+<%= form_for(:invite, url: invites_path, method: 'post', html: {class: "form-inline"} ) do |f| %>
+  <%= f.hidden_field :event_id, :value => event_id %>
+  <div class="form-group">
+    <%= f.label :user_id, "User Id" %>
+    <%= f.text_field :user_id, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Invite", class: "btn btn-primary" %>
+  </div>
+<% end %>

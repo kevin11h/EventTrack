@@ -9,6 +9,11 @@
   Event details:
   <p> <%= @event.description %> </p>
 </div>
+<% if can_edit? @event %>
+  <div style="margin-top: 15px; !important">
+    <%= render partial: 'invites/invite', locals: {event_id: @event.id}%>
+  </div>
+<% end %>
 <br/>
 Who is going?
 <ul><% @event.attendees.each do |a| %><li><%= link_to a.username, a %></li><% end %><ul>
