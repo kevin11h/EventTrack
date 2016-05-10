@@ -3,7 +3,7 @@
   <% if @events.any? %>
     <%= render 'shared/events', object: @events %>
   <% else %>
-    <%= link_to "You haven't created any event, click here and create one now", new_event_path %>
+    <%= link_to "You haven't created any event, click here and create one now", new_event_path, class: "text-center text-muted" %>
   <% end %>
   <h3>Events I'm invited:</h3>
   <% if @invites.any? %>
