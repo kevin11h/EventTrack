@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
 
-  #users
-  resources :users, except: [:index,:destroy]
-  get 'profile' => 'users#profile'
 
+  #users
+  get 'profile' => 'users#profile'
+  devise_for :users
   #events
   resources :events
   post 'invites' => 'invites#create'
+
   #static_pages and sessions
   root 'static_pages#home'
-  get 'login' => 'sessions#new'
-  post 'login' => 'sessions#create'
-  delete 'login' => 'sessions#destroy'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

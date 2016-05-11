@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in?, only: :profile
+  before_action :authenticate_user?, only: :profile
 
   def new
     @user = User.new

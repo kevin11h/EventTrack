@@ -7,4 +7,5 @@ module EventsHelper
   def can_edit?(event)
     event.creator.id == current_user.id
   end
+  
 end

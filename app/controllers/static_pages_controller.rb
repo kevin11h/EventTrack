@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
 
   def home
-    if logged_in?
+    if user_signed_in?
       @events = current_user.events
       @invites = current_user.attended_events
     end

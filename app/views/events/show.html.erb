@@ -2,7 +2,7 @@
   <h3> <%= @event.name %> </h3>
 </div>
 <div>
-  <p>Created by: <%= @event.creator.username %></p>
+  <p>Created by: <%= @event.creator.email %></p>
   <p>When: <%= event_date @event.date %></p>
 </div>
 <div>
@@ -16,5 +16,5 @@
 <% end %>
 <br/>
 Who is going?
-<ul><% @event.attendees.each do |a| %><li><%= link_to a.username, a %></li><% end %><ul>
+<ul><% @event.attendees.each do |a| %><li><%= a.email  %></li><% end %><ul>
 <br/>

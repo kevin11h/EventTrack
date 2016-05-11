@@ -1,4 +1,4 @@
-<% if logged_in? %>
+<% if user_signed_in? %>
   <h3>Events I've created:</h3>
   <% if @events.any? %>
     <%= render 'shared/events', object: @events %>
@@ -16,6 +16,6 @@
     <h1>Event Track</h1>
     <p>Create events, invite your friends, and party hard.<br/>
     Don't have an account? No problem.<br/>
-    Create one right <%= link_to "here", '#', class: "btn btn-success" %></p>
+    Create one right <%= link_to "here", new_user_registration_path, class: "btn btn-success" %></p>
   </div>
 <% end %>
