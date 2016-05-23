@@ -5,7 +5,5 @@ class CreateInvites < ActiveRecord::Migration
       t.integer :attended_event_id
       t.timestamps null: false
     end
-    add_foreign_key :invites, :users, column: :attendee_id
-    add_foreign_key :invites, :events, column: :attended_event_id 
   end
 end
