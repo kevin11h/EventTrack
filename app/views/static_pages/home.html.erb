@@ -7,7 +7,7 @@
   <% end %>
   <h3>Events I'm invited:</h3>
   <% if @invites.any? %>
-    <%= render 'shared/events', object: @invites %>
+    <%= render 'shared/invited_events', object: @invites %>
   <% else %>
      <h4 class="text-center text-muted">You aren't going anywhere </h4>
   <% end %>

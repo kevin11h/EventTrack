@@ -1,0 +1,20 @@
+<% if (object.any?) &&  %>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Event</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+  <% object.each do |invite| %>
+    <tr>
+      <td style="width: 15% !important"><%= link_to invite.attended_event.name, event_path(invite.attended_event) %></td>
+      <td style="width: 15% !important"><%= event_date invite.attended_event.date %></td>
+      <td style="width: 58% !important"><%= invite.attended_event.description[0,50] %></td>
+      <td style="width: 10% !important"><%= invite.status %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>

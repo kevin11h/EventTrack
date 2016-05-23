@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   devise_for :users
   #events
   resources :events
-  post 'invites' => 'invites#create'
+  post  'invites'       =>  'invites#create'
+  post  'confirmation/:id'   =>  'invites#confirm', as: "confirmation"
 
   #static_pages and sessions
   root 'static_pages#home'
