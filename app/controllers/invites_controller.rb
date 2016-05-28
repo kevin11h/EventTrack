@@ -16,7 +16,6 @@ class InvitesController < ApplicationController
       redirect_to request.referer || events_path
     else
       @invite = event.invites.build(attendee: user)
-      @invite.status = 'Pending'
       if @invite.save
         flash[:success] = "Friend invited with success"
         redirect_to event
