@@ -14,6 +14,9 @@ class InvitesController < ApplicationController
     if user.nil?
       flash[:danger] = "User not found"
       redirect_to request.referer || events_path
+    elsif (event.creator != current_user)
+      flash[:danger] = "This event doesn't belong to this user"
+      redirect_to request.referer || events_path
     else
       @invite = event.invites.build(attendee: user)
       if @invite.save
@@ -28,11 +31,16 @@ class InvitesController < ApplicationController
 
   def confirm
     invite = Invite.find_by(id: params[:id])
-    invite.status = 'Confirmed'
-    if invite.save
-      redirect_to invite.attended_event
+    if (invite.attendee.id = current_user.id)
+      invite.confirm_invite
+      if invite.save
+        redirect_to invite.attended_event
+      else
+        redirect_to request.referer || events_path
+      end
     else
-      redirect_to request.referer || events_path
+      flash[:danger] = "This invite doesn't belongs to you"
+      redirect_to request.referer || events_path  
     end
   end
 
