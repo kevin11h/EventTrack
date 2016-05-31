@@ -1,16 +1,18 @@
 <% if user_signed_in? %>
-  <h3>Events I've created:</h3>
-  <% if @events.any? %>
-    <%= render 'shared/events', object: @events %>
-  <% else %>
-    <%= link_to "You haven't created any event, click here and create one now", new_event_path, class: "text-center text-muted" %>
-  <% end %>
-  <h3>Events I'm invited:</h3>
-  <% if @invites.any? %>
-    <%= render 'shared/invited_events', object: @invites %>
-  <% else %>
-     <h4 class="text-center text-muted">You aren't going anywhere </h4>
-  <% end %>
+  <div class="container">
+    <h3>Events I've created:</h3>
+    <% if @events.any? %>
+      <%= render 'shared/events', object: @events %>
+    <% else %>
+      <%= link_to "You haven't created any event, click here and create one now", new_event_path, class: "text-center text-muted" %>
+    <% end %>
+    <h3>Events I'm invited:</h3>
+    <% if @invites.any? %>
+      <%= render 'shared/invited_events', object: @invites %>
+    <% else %>
+       <h4 class="text-center text-muted">You aren't going anywhere </h4>
+    <% end %>
+  </div>
 <% else %>
   <div class="jumbotron" style="background-color: #72B095 !important">
     <div class="row">

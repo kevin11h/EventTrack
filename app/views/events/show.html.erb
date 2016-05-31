@@ -1,32 +1,34 @@
-<div class="page-header">
-  <h3> <%= @event.name %> </h3>
-</div>
-<div>
-  <p>Created by: <%= @event.creator.email %></p>
-  <p>When: <%= event_date @event.date %></p>
-</div>
-<div>
-  Event details:
-  <p> <%= @event.description %> </p>
-</div>
-<% if can_edit? @event %>
-  <div style="margin-top: 15px; !important">
-    <%= render partial: 'invites/invite', locals: {event_id: @event.id}%>
+<div class="container">
+  <div class="page-header">
+    <h3> <%= @event.name %> </h3>
   </div>
-<% end %>
-<br/>
-Who is going?
-<ul>
-  <% @event.invites.each do |invite| %>
-    <li><%= invite.attendee.email  %> -
-      <% if invite.status == 'Pending' %>
-        Pending
-        <% if invite.attendee.id == current_user.id %>
-          - <%= link_to "Confirm your presence", confirmation_path(invite), method: "post"%>
-        <% end %>
-      <% else %>
-        <%= invite.status %>
-      <% end %>
-    </li>
+  <div>
+    <p>Created by: <%= @event.creator.email %></p>
+    <p>When: <%= event_date @event.date %></p>
+  </div>
+  <div>
+    Event details:
+    <p> <%= @event.description %> </p>
+  </div>
+  <% if can_edit? @event %>
+    <div style="margin-top: 15px; !important">
+      <%= render partial: 'invites/invite', locals: {event_id: @event.id}%>
+    </div>
   <% end %>
-<ul>
+  <br/>
+  Who is going?
+  <ul>
+    <% @event.invites.each do |invite| %>
+      <li><%= invite.attendee.email  %> -
+        <% if invite.status == 'Pending' %>
+          Pending
+          <% if invite.attendee.id == current_user.id %>
+            - <%= link_to "Confirm your presence", confirmation_path(invite), method: "post"%>
+          <% end %>
+        <% else %>
+          <%= invite.status %>
+        <% end %>
+      </li>
+    <% end %>
+  <ul>
+</div>

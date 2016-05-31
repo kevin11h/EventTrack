@@ -1,5 +1,7 @@
-<% if @events.any? %>
-  <%= render 'shared/events', object: @events %>
-<% else %>
-  <h3 class="text-center text-muted"> There are no events </h3>
-<% end %>
+<div class="container">
+  <% if @events.any? %>
+    <%= render 'shared/events', object: @events %>
+  <% else %>
+    <h3 class="text-center text-muted"> There are no events </h3>
+  <% end %>
+</div>

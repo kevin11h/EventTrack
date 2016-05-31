@@ -10,8 +10,10 @@
 <body>
   <%= render 'shared/navbar' %>
   <div style="margin-top: 45px">
-    <%= render 'shared/messages' %>
-    <%= yield %>
+    <div class="container">
+      <%= render 'shared/messages' %>
+    </div>
+      <%= yield %>
   </div>
 </body>
 </html>

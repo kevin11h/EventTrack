@@ -1,21 +1,23 @@
-<%= form_for(@event) do |f| %>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= f.label :name %>
-        <%= f.text_field :name, class: "form-control" %>
+<div style="margin-top: 20px !important">
+  <%= form_for(@event) do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :date %>
+          <%= f.date_field :date, class: "form-control" %>
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= f.label :date %>
-        <%= f.date_field :date, class: "form-control" %>
-      </div>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %>
     </div>
-  </div>
-  <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: "form-control" %>
-  </div>
-  <%= f.submit class: "btn btn-success" %>
-<% end %>
+    <%= f.submit class: "btn btn-success" %>
+  <% end %>
+</div>
