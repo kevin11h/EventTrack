@@ -3,7 +3,7 @@
     <% object.each do |event| %>
       <div class="col-md-3 col-sm-6">
         <div class="page-header">
-          <h2><%= link_to event.name, event %></h2>
+          <h3><%= link_to event.name, event %></h3>
         </div>
         <p style="height: 160px"><%= event.description[0..336] + "..." %></p>
         <% if can_edit? event %>
@@ -15,5 +15,4 @@
       </div>
     <% end %>
   </div>
-  <%= will_paginate %>
 <% end %>

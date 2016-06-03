@@ -3,7 +3,7 @@
     <% object.each do |invite| %>
       <div class="col-md-3">
         <div class="page-header">
-          <h2><%= link_to invite.attended_event.name, event_path(invite.attended_event) %></h2>
+          <h3><%= link_to invite.attended_event.name, event_path(invite.attended_event) %></h3>
         </div>
         <p class="text-justify" style="height: 160px">
           <%= invite.attended_event.description[0..336] %>

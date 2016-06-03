@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+50.times do
+  event = Event.new
+  event.name = Faker::StarWars.planet
+  event.description = Faker::StarWars.quote
+  event.date = Time.now
+  event.creator = User.find(1)
+  event.save
+end
