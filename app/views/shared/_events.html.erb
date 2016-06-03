@@ -1,24 +1,19 @@
 <% if object.any? %>
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Event</th>
-        <th>Date</th>
-        <th>Description</th>
-        <th></th>
-      </tr>
-    </thead>
-  <% object.each do |event| %>
-    <tr>
-      <td style="width: 15% !important"><%= link_to event.name, event_path(event) %></td>
-      <td style="width: 15% !important"><%= event_date event.date %></td>
-      <td style="width: 68% !important"><%= event.description[0,50] %></td>
-      <% if can_edit? event %>
-        <td style="width: 2% !important"><%= link_to "Edit", edit_event_path(event), class: "btn btn-primary" %></td>
-      <% else %>
-        <td style="width: 2% !important"></td>
-      <% end %>
-    </tr>
-  <% end %>
-  </table>
+  <div class="row">
+    <% object.each do |event| %>
+      <div class="col-md-3 col-sm-6">
+        <div class="page-header">
+          <h2><%= link_to event.name, event %></h2>
+        </div>
+        <p style="height: 160px"><%= event.description[0..336] + "..." %></p>
+        <% if can_edit? event %>
+          <p>
+            <span class="pull-left"><%= pluralize(event.invites.count, "Person") %> Invited</span>
+            <span class="pull-right"><%= link_to "Edit", edit_event_path(event), class: "btn btn-primary" %></span>
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= will_paginate %>
 <% end %>

@@ -19,7 +19,7 @@ class EventsController < ApplicationController
 
   def index
     @events = []
-    @events = current_user.events unless current_user.nil?
+    @events = current_user.events.paginate(page: params[:page]) unless current_user.nil?
   end
 
   def show
