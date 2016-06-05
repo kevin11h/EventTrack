@@ -57,8 +57,6 @@ class EventsController < ApplicationController
       redirect_to request.referrer || root_url if @event.nil?
     end
 
-    def user_logged
-      redirect_to root_url unless logged_in?
-    end
+  
 
 end

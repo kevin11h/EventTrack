@@ -1,7 +1,7 @@
 class InvitesController < ApplicationController
+  before_action :authenticate_user!
 
   def create
-
     event = Event.find_by(id: params[:invite][:event_id])
 
     if event.nil?
@@ -40,10 +40,14 @@ class InvitesController < ApplicationController
       end
     else
       flash[:danger] = "This invite doesn't belongs to you"
-      redirect_to request.referer || events_path  
+      redirect_to request.referer || events_path
     end
   end
 
-
+  def index
+    if !current_user.nil?
+      @invites = current_user.invites.paginate(page: (params[:page]))
+    end
+  end
 
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :users
   #events
   resources :events
+  resources :invites, only: :index
   post  'invites'       =>  'invites#create'
   post  'confirmation/:id'   =>  'invites#confirm', as: "confirmation"
 

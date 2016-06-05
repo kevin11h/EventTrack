@@ -1,0 +1,21 @@
+<% if @invites.any? %>
+  <div class="container" style="margin-top: 50px">
+    <table class="table table-striped">
+      <tr>
+        <th>Event</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+      <% @invites.each do |invite| %>
+        <tr>
+          <td><%= link_to invite.attended_event.name, invite.attended_event %></td>
+          <td><%= event_date invite.attended_event.date %></td>
+          <td><%= invite.attended_event.description[0..50] %></td>
+          <td><%= invite.status %></td>          
+        </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @events %>
+  </div>
+<% end %>
