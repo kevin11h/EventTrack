@@ -17,13 +17,13 @@
   <% end %>
   <br/>
   Who is going?
-  <ul>
+  <ul id="invites">
     <% @event.invites.each do |invite| %>
       <li><%= invite.attendee.email  %> -
         <% if invite.status == 'Pending' %>
           Pending
           <% if invite.attendee.id == current_user.id %>
-            - <%= link_to "Confirm your presence", confirmation_path(invite), method: "post"%>
+            - <%= link_to "Confirm your presence", confirmation_path(invite), method: "post" %>
           <% end %>
         <% else %>
           <%= invite.status %>

@@ -23,7 +23,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @event = Event.includes(:invites).find(params[:id])
   end
 
   def destroy
@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.includes(:invites).find(params[:id])
   end
 
   def update
@@ -57,6 +57,6 @@ class EventsController < ApplicationController
       redirect_to request.referrer || root_url if @event.nil?
     end
 
-  
+
 
 end
