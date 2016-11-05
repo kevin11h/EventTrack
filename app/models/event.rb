@@ -1,4 +1,4 @@
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   scope :newest, -> { order("date desc") }
   belongs_to :creator, :class_name => "User"
 

@@ -1,4 +1,4 @@
-class Invite < ActiveRecord::Base
+class Invite < ApplicationRecord
 
   before_create :set_peding
   belongs_to :attendee, class_name: "User"
