@@ -63,3 +63,34 @@
     display: inline-block;
     margin-top: 7px;
 }
+
+.event-invite {
+    display: inline-block;
+    width: 24%;
+    border-radius: 5px;
+    max-height: 50px;
+    height: 100%;
+    border: 0.5px solid #e2e2e2;
+}
+.event-invite-image {    
+    float: left;
+    clear: left;
+    margin-right: 5px;
+}
+.event-invite-content {
+    float: left;
+    width: 79%;
+}
+.event-invite-confirmation {
+    display: inline-block;
+    padding: 2px 3px;
+    color: #4cae4c;
+    border: 0.5px solid #4cae4c;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.event-invite-confirmation:hover {
+    background-color: #4cae4c;
+    color: white;
+    text-decoration: none;
+}

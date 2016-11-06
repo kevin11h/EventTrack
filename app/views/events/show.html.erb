@@ -8,7 +8,7 @@
   </div>
   <div>
     Event details:
-    <p> <%= @event.description %> </p>
+    <p style="overflow: auto;"> <%= @event.description %> </p>
   </div>
   <% if can_edit? @event %>
     <div style="margin-top: 15px; !important">
@@ -16,18 +16,21 @@
     </div>
   <% end %>
   <br/>
-  Who is going?
-  <ul id="invites">
+  <p>Who is going?</p>  
     <% @event.invites.each do |invite| %>
-      <li><%= invite.attendee.email  %> -
-        <span id="invite-<%=invite.id%>"><%= invite.status %></span> 
-        <% if invite.status == 'Pending' %>          
-          <% if invite.attendee.id == current_user.id %>
-            <%= link_to "- Confirm your presence", confirmation_path(invite), method: :post,
-                          remote: true, class: 'bt btn-primary', id: 'bt-invite-'+invite.id.to_s  %>
-          <% end %>
-        <% end %>
-      </li>
+      <div class="event-invite">
+        <div class="event-invite-image">
+          <%= image_tag 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png', size: '50x50', class: 'img-responsive'  %>
+        </div>
+        <div class="event-invite-content">                  
+          <%= invite.attendee.email  %> <br>
+          <span id="invite-<%=invite.id%>"><%= invite.status %></span> 
+                <% if invite.status == 'Pending' && invite.attendee.id == current_user.id %>                        
+                  <%= link_to "Confirm", confirmation_path(invite), method: :post,
+                              remote: true, class: 'event-invite-confirmation' , id: 'bt-invite-'+invite.id.to_s  %>              
+            <% end %>      
+        </div>        
+      </div>                  
     <% end %>
-  <ul>
+  
 </div>
