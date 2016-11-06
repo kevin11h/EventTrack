@@ -1,4 +1,4 @@
 == EventTrack
 
-This is an application mabe to clone Event Brite for my studies. Fell free to fork and use it.
-To see an live example access: http://shielded-woodland-27213.herokuapp.com/
+This is an application I've made in my studies of The Odin Project.
+You can see a live example here: https://eventtrack.herokuapp.com/
