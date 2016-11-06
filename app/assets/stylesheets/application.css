@@ -60,5 +60,6 @@
     padding-top: 15px;
 }
 .event-card-bottom-btn {
+    display: inline-block;
     margin-top: 7px;
 }
