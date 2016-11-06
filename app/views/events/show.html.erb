@@ -20,13 +20,12 @@
   <ul id="invites">
     <% @event.invites.each do |invite| %>
       <li><%= invite.attendee.email  %> -
-        <% if invite.status == 'Pending' %>
-          Pending
+        <span id="invite-<%=invite.id%>"><%= invite.status %></span> 
+        <% if invite.status == 'Pending' %>          
           <% if invite.attendee.id == current_user.id %>
-            - <%= link_to "Confirm your presence", confirmation_path(invite), method: "post" %>
+            <%= link_to "- Confirm your presence", confirmation_path(invite), method: :post,
+                          remote: true, class: 'bt btn-primary', id: 'bt-invite-'+invite.id.to_s  %>
           <% end %>
-        <% else %>
-          <%= invite.status %>
         <% end %>
       </li>
     <% end %>
