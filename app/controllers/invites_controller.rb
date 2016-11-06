@@ -5,19 +5,19 @@ class InvitesController < ApplicationController
     event = Event.find_by(id: params[:invite][:event_id])
 
     if event.nil?
-      flash[:danger] = "Event not found"
+      flash[:danger] = 'Event not found'
       redirect_to request.referer || events_path
     end
 
     user = User.find_by(email: params[:invite][:email])
 
     if user.nil?
-      flash[:danger] = "User not found"
+      flash[:danger] = 'User not found'
       redirect_to request.referer || events_path
-    elsif (event.creator != current_user)
+    elsif event.creator != current_user
       flash[:danger] = "This event doesn't belong to this user"
       redirect_to request.referer || events_path
-    elsif (current_user == event.creator)
+    elsif current_user == event.creator
       flash[:danger] = "You can't invite yourself"
       redirect_to event
     else
@@ -27,18 +27,21 @@ class InvitesController < ApplicationController
           format.js
         end
       else
-        flash[:danger] = "Failed to create invite"
+        flash[:danger] = 'Failed to create invite'
         redirect_to request.referer || events_path
       end
     end
   end
 
   def confirm
-    invite = Invite.find_by(id: params[:id])
-    if (invite.attendee.id = current_user.id)
-      invite.confirm_invite
-      if invite.save
-        redirect_to invite.attended_event
+    @invite = Invite.find_by(id: params[:id])
+    if (@invite.attendee.id = current_user.id)
+      @invite.confirm_invite
+      if @invite.save
+        # redirect_to invite.attended_event
+        respond_to do |format|
+          format.js
+        end
       else
         redirect_to request.referer || events_path
       end
