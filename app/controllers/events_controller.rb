@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except: :index
-  before_action :correct_user, only: [:edit,:update]
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @event = Event.new
@@ -9,10 +9,10 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(events_params)
     if @event.save
-      flash[:success] = "Event created"
+      flash[:success] = 'Event created'
       redirect_to @event
     else
-      flash.now[:danger] = "Failed to create event"
+      flash.now[:danger] = 'Failed to create event'
       render :new
     end
   end
@@ -23,12 +23,13 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.includes(:invites).find(params[:id])
+    @event = Event.find(params[:id])
+    @invites = Invite.eager_load(:attendee).where(attended_event_id: @event.id)
   end
 
   def destroy
     @event.destroy
-    flash[:success] = "Event deleted with success"
+    flash[:success] = 'Event deleted with success'
     redirect_to request.referrer || root_url
   end
 
@@ -39,15 +40,16 @@ class EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
     if @event.update(events_params)
-      flash[:success] = "Event updated"
+      flash[:success] = 'Event updated'
       redirect_to @event
     else
-      flash.now[:danger] = "Failed to update event"
+      flash.now[:danger] = 'Failed to update event'
       render :edit
     end
   end
 
   private
+
     def events_params
       params.require(:event).permit(:name, :date, :description)
     end

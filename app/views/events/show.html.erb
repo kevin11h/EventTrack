@@ -1,6 +1,6 @@
 <div class="container">
   <div class="page-header">
-    <h1> <%= @event.name %> <small>When: <%= event_date @event.date %></small> </h1>
+    <h1> <%= @event.name %> <small style="float:right;">When: <%= event_date @event.date %></small> </h1>
   </div>
   <div>
     <p>Created by: <%= @event.creator.email %></p>
@@ -19,7 +19,7 @@
   <% end %>
   <br/>
   <p>Who is going?</p>  
-    <% @event.invites.each do |invite| %>
+    <% @invites.each do |invite| %>
       <div class="event-invite">
         <div class="event-invite-image">
           <%= image_tag 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png', size: '50x50', class: 'img-responsive'  %>
