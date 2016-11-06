@@ -1,14 +1,16 @@
 <div class="container">
   <div class="page-header">
-    <h3> <%= @event.name %> </h3>
+    <h1> <%= @event.name %> <small>When: <%= event_date @event.date %></small> </h1>
   </div>
   <div>
     <p>Created by: <%= @event.creator.email %></p>
-    <p>When: <%= event_date @event.date %></p>
+    <p></p>
   </div>
   <div>
     Event details:
-    <p style="overflow: auto;"> <%= @event.description %> </p>
+    <div class="form-group">
+      <%= text_area_tag :description,  @event.description, disabled: true, class: 'form-control', rows: '10' %>    
+    </div>     
   </div>
   <% if can_edit? @event %>
     <div style="margin-top: 15px; !important">
