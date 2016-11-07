@@ -1,1 +1,1 @@
-$("#invites").append("<li> <%= @invite.attendee.email %> - Pending</li>");
+$("#invites").append("<%= escape_javascript  render 'invites/invitation', invite: @invite %> ");

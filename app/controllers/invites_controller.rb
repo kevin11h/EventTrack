@@ -17,7 +17,7 @@ class InvitesController < ApplicationController
     elsif event.creator != current_user
       flash[:danger] = "This event doesn't belong to this user"
       redirect_to request.referer || events_path
-    elsif current_user == event.creator
+    elsif user == event.creator
       flash[:danger] = "You can't invite yourself"
       redirect_to event
     else
@@ -38,7 +38,6 @@ class InvitesController < ApplicationController
     if (@invite.attendee.id = current_user.id)
       @invite.confirm_invite
       if @invite.save
-        # redirect_to invite.attended_event
         respond_to do |format|
           format.js
         end
@@ -52,9 +51,8 @@ class InvitesController < ApplicationController
   end
 
   def index
-    if !current_user.nil?
-      @invites = current_user.invites.paginate(page: (params[:page]))
-    end
+    @invites = current_user.invites.paginate page: params[:page] unless
+      current_user.nil?
   end
 
 end
