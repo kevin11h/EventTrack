@@ -1,27 +1,33 @@
-<div class="container">
-  <div class="page-header">
-    <h1> <%= @event.name %> <small style="float:right;">When: <%= event_date @event.date %></small> </h1>
-  </div>
-  <div>
+<div class="page-header">
+    <h1> 
+        <%= @event.name %> <small style="float:right;">When: <%= event_date @event.date %></small> 
+    </h1>
+</div>
+
+<div>
     <p>Created by: <%= @event.creator.email %></p>
-    <p></p>
-  </div>
-  <div>
+</div>
+
+<div>
     Event details:
     <div class="form-group">
-      <%= text_area_tag :description,  @event.description, disabled: true, class: 'form-control', rows: '10' %>    
+        <%= text_area_tag :description,  @event.description, disabled: true, class: 'form-control', rows: '10' %>    
     </div>     
-  </div>
-  <% if can_edit? @event %>
-    <div style="margin-top: 15px; !important">
-      <%= render partial: 'invites/invite', locals: {event_id: @event.id}%>
-    </div>
-  <% end %>
-  <br/>
-  <p>Who is going?</p>
-  <div id="invites">
-    <% @invites.each do |invite| %>
-      <%= render 'invites/invitation', invite: invite%>
-    <% end %>
-  </div>
 </div>
+
+<% if can_edit? @event %>
+    <div style="margin-top: 15px; !important">
+        <%= render partial: 'invites/invite', locals: {event_id: @event.id}%>
+    </div>
+<% end %>
+
+<br/>
+
+<p>Who is going?</p>
+
+<div id="invites">
+    <% @invites.each do |invite| %>
+        <%= render 'invites/invitation', invite: invite%>
+    <% end %>
+</div>
+

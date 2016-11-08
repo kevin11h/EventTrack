@@ -1,22 +1,21 @@
-<div class="container">
+<h1>
+    Events I've created: <span class="pull-right"><%= link_to "My events", events_path, class: 'btn btn-success' %></span>
+</h1>
 
-  <h1>Events I've created: <span class="pull-right"><%= link_to "My events", events_path, class: 'btn btn-success' %></span></h1>
-
-  <% if @events.any? %>
+<% if @events.any? %>
     <%= render 'shared/events', object: @events %>
-  <% else %>
+<% else %>
     <%= link_to "You haven't created any event, click here and create one now", new_event_path, class: "text-center text-muted" %>
-  <% end %>
+<% end %>
+<hr class="featurette-divider">
 
-  <p class="pull-right"></p>
-  <hr class="featurette-divider">
+<h1>
+    Events I'm invited: <span class="pull-right"><%= link_to "My Invites", invites_path, class: 'btn btn-success' %></span> 
+</h1>
 
-  <h1>Events I'm invited: <span class="pull-right"><%= link_to "My Invites", invites_path, class: 'btn btn-success' %></span> </h1>
-
-  <% if @invites.any? %>
+<% if @invites.any? %>
     <%= render 'shared/invited_events', object: @invites %>
-  <% else %>
+<% else %>
     <h4 class="text-center text-muted">You aren't going anywhere </h4>
-  <% end %>
-  <p class="pull-right">
-</div>
+<% end %>
+
