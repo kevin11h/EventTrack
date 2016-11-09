@@ -9,14 +9,11 @@
 </head>
 <body>
   <%= render 'shared/navbar' %>
-  <div style="margin-top: 45px">
+  <div style="margin-top: 55px">
     <main class="container" id="main-container">
-        <div id="messages">
-            <%= render 'shared/messages' %>  
-        </div>
+        <%= render 'shared/messages' %>  
         <%= yield %>      
-    </main>
-      
+    </main>      
   </div>
 </body>
 </html>
