@@ -1,7 +1,5 @@
-<div class="container">
-  <% if @events.any? %>
+<% if @events.any? %>
     <%= render 'events_list' %>
-  <% else %>
+<% else %>
     <h3 class="text-center text-muted"> There are no events </h3>
-  <% end %>
-</div>
+<% end %>

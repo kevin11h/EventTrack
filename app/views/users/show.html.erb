@@ -3,7 +3,7 @@
 </div>
 Events I've created:
 <% if @user.events %>
-<%= render 'shared/events', object: @user.events %>
+    <%= render 'shared/events', object: @user.events %>
 <% else %>
   <h4 class="text-center text-muted">This user doesn't have any event</h4>
 <% end %>

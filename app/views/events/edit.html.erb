@@ -1,8 +1,6 @@
-<div class="container">
-  <%= render 'form' %>
-  <% if can_edit? @event %>
-    <div style="margin-top: 15px; !important">
-      <%= render partial: 'invites/invite', locals: {event_id: @event.id}%>
-    </div>
-  <% end %>
+<%= render 'form' %>
+<% if can_edit? @event %>
+<div style="margin-top: 15px; !important">
+    <%= render partial: 'invites/invite', locals: {event_id: @event.id}%>
 </div>
+<% end %>
