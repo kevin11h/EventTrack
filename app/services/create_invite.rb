@@ -11,7 +11,7 @@ class CreateInvite
   def invite(email)
     @created = false
     return unless validate_creator
-    @attendee = User.find_by email: email
+    @attendee = User.find_by email: email 
     return unless validate_attendee
     @invitation = @event.invites.build(attendee: @attendee)
     @created = @invitation.save

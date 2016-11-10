@@ -5,7 +5,7 @@
 <% if @events.any? %>
     <%= render 'shared/events', object: @events %>
 <% else %>
-    <%= link_to "You haven't created any event, click here and create one now", new_event_path, class: "text-center text-muted" %>
+    <h4 class="text-center text-muted">You haven't created any event, <%= link_to 'click here', new_event_path %> and create one now</h4> 
 <% end %>
 <hr class="featurette-divider">
 
