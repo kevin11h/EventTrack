@@ -1,0 +1,17 @@
+<% invites.each do |invite| %>
+    <div class="event-invite">
+        <div class="event-invite-image">
+            <%= image_tag 'avatar.png', size: '50x50', class: 'img-responsive'%>
+        </div>
+        <div class="event-invite-content">                  
+            <%= invite.attendee.email  %> <br/>
+            <span id="invite-<%=invite.id%>">
+                <%= invite.status %>
+            </span> 
+            <% if invite.status == 'Pending' && invite.attendee.id == current_user.id %>                        
+                <%= link_to "Confirm", confirmation_path(invite), method: :post,
+                            remote: true, class: 'event-invite-confirmation' , id: 'bt-invite-'+invite.id.to_s  %>              
+            <% end %>      
+        </div>        
+    </div>                  
+<% end %>
