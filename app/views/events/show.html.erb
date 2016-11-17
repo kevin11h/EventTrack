@@ -25,9 +25,7 @@
 
 <p>Who is going?</p>
 
-<div id="invites">
-    <% @invites.each do |invite| %>
-        <%= render 'invites/invitation', invite: invite %>
-    <% end %>
+<div id="invites">    
+    <%= render 'invites/invitations', invites: @invites %>    
 </div>
 
