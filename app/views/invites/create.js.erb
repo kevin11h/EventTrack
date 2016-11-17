@@ -1,5 +1,5 @@
 <% if @service.created?%>
-    $("#invites").append("<%= escape_javascript  render 'invites/invitation', invite: @invite %> ");
+    $("#invites").append("<%= escape_javascript  render 'invitation', invite: @invite %> ");
 <% else %>
     $("#main-container").prepend(" <%= escape_javascript render 'error_messages', object: @service.errors %> ");
 <% end %>

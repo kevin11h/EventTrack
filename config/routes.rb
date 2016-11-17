@@ -7,9 +7,8 @@ Rails.application.routes.draw do
 
   # events
   resources :events
-  resources :invites, only: :index
-  post  invites: 'invites#create'
-  post  'confirmation/:id' => 'invites#confirm', as: 'confirmation'
+  resources :invites, only: [:index, :create]
+  post 'confirmation/:id' => 'invites#confirm', as: 'confirmation'
 
   # static_pages and sessions
   root 'static_pages#home'
